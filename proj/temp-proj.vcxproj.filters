@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="generated">
+      <UniqueIdentifier>{9efab6ef-47ab-4c83-93af-568e9fee0c44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{b1050edd-d90c-49e7-a066-1cfacdfd6e5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="microvium">
+      <UniqueIdentifier>{27099e2f-bf44-4448-a183-7daf79c973d9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\generated\App_ffi.cpp">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\dist-c\microvium.c">
+      <Filter>microvium</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\generated\App_ffi.h">
+      <Filter>generated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\dist-c\microvium.h">
+      <Filter>microvium</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\generated\snapshot.mvm-bc">
+      <Filter>generated</Filter>
+    </None>
+    <None Include="..\src\lib\ffi.js">
+      <Filter>lib</Filter>
+    </None>
+    <None Include="..\src\lib\utils.js">
+      <Filter>lib</Filter>
+    </None>
+  </ItemGroup>
+</Project>

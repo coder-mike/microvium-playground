@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.mvms": "javascript",
+    "*.evm": "c",
+    "ostream": "cpp"
+  }
+}
