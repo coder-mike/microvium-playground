@@ -73,7 +73,7 @@ public:
   
   void runRestoreEvents();
   void fibonacci(int32_t limit);
-  void command(std::string command);
+  void command(std::string command, mvm::Any payload);
 
 protected:
   // Implement these in your C++ code  

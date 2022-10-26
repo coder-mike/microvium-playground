@@ -1,6 +1,4 @@
-// Build with `node ../dist/cli.js main.js --output-bytes`
-
-import {exportToC, generate, importFromC} from './lib/ffi.js'
+import { exportToC, generate, importFromC, onRestore } from './lib/ffi.js'
 
 const intToString = importFromC('string', 'intToString', [['int','val']]);
 const floatToString = importFromC('string', 'floatToString', [['float','val']]);
@@ -14,7 +12,9 @@ function log(idx, fib) {
     stringLog(`{"idx": ${intToString(idx++)}, "fib": ${floatToString(fib)}`);
 }
 
-function fibonacci(limit) {
+onRestore(() => console.log = stringLog);
+
+function fibonacci(command, limit) {
   let idx = 0;
 
   let first = 0.0;
@@ -35,18 +35,22 @@ function fibonacci(limit) {
 exportToC('void', 'fibonacci', [['int', 'limit']], fibonacci);
 
 function command(command, payload) {
-  console.log("got command " + command);
-  console.log("with payload: " + payload);
+  try {
+    console.log("got command: " + command);
+    console.log("with payload: " + payload);
 
-  if (command === "fib") {
-    emitAck(command);
-    fibonacci(command, payload);
-  } else {
-    emitError(command, "unknown command: " + command);
+    if (command === "fib") {
+      emitAck(command);
+      fibonacci(command, payload);
+    } else {
+      emitError(command, "unknown command: " + command);
+    }
+  } catch (e) {
+    console.log(`Error: ${e}`)
   }
 }
 
-exportToC('void', 'command', [['string', 'command', 'string', 'payload']], command);
+exportToC('void', 'command', [['string', 'command'], ['any', 'payload']], command);
 
 generate({
   appName: 'App',

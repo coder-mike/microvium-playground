@@ -172,14 +172,15 @@ void App::fibonacci(int32_t limit) {
   return ;
 }
 
-void App::command(std::string command) {
+void App::command(std::string command, mvm::Any payload) {
   // Prepare the arguments
-  mvm_Value _args[1];
+  mvm_Value _args[2];
   _args[0] = mvm_newString(_vm, command.c_str(), command.size());
+  _args[1] = payload.value();
   mvm_Value _result;
 
   // Call the JS function
-  mvm_TeError err = mvm_call(_vm, _vmExports[2], &_result, _args, 1);
+  mvm_TeError err = mvm_call(_vm, _vmExports[2], &_result, _args, 2);
   if (err != MVM_E_SUCCESS) MVM_FATAL_ERROR(_vm, err);
 
   // Convert/return the result

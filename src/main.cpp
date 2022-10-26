@@ -7,7 +7,7 @@ std::vector<uint8_t> readFile(const std::string& filename);
 
 int main() {
   App app(readFile("../src/generated/snapshot.mvm-bc"));
-  app.fibonacci(100);
+  app.command("fib", app.newNumber(100));
   return 0;
 }
 
@@ -41,6 +41,5 @@ std::vector<uint8_t> readFile(const std::string& filename) {
     throw std::invalid_argument("Could not open file");
   }
   std::vector<uint8_t> data((std::istreambuf_iterator<char>(instream)), std::istreambuf_iterator<char>());
-  std::cout << data.size() << std::endl;
   return data;
 }
