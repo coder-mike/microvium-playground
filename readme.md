@@ -10,4 +10,4 @@ node ../dist/cli.js src/main.js -s src/generated/snapshot.mvm-bc
 
 ## Build and Run C++
 
-I'm on Windows, so it was convenient for me to use Visual Studio. I'm using Visual Studio 2022.
+I'm on Windows, so it was convenient for me to use Visual Studio. I'm using Visual Studio 2022. See `proj/temp-proj.sln`.
