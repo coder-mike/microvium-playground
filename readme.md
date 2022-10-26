@@ -8,6 +8,8 @@ This is a throw-away project I'm using to debug different scenarios in [Microviu
 node ../dist/cli.js src/main.js -s src/generated/snapshot.mvm-bc
 ```
 
+If you're using Visual C++, I've set this up as a pre-build step in the project, so just hitting "play" in the IDE will build both the JS and C++ and run it.
+
 ## Build and Run C++
 
 I'm on Windows, so it was convenient for me to use Visual Studio. I'm using Visual Studio 2022. See `proj/temp-proj.sln`.

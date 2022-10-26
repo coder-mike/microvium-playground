@@ -142,10 +142,17 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <CustomBuildStep>
-      <Command>node ../../dist/cli.js src/main.js -s src/generated/snapshot.mvm-bc</Command>
+      <Command>
+      </Command>
       <TreatOutputAsContent>
       </TreatOutputAsContent>
     </CustomBuildStep>
+    <PreBuildEvent>
+      <Command>pushd .. &amp;&amp; node ../dist/cli.js src/main.js -s src/generated/snapshot.mvm-bc</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Compile bytecode</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
